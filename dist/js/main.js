@@ -13,6 +13,7 @@ async function setupStream() {
             video: true,
             audio: true,
         });
+
         setupVideoFeedback(stream);
 
         return stream;
@@ -39,14 +40,17 @@ function setupVideoFeedback(stream) {
 
 async function startRecording() {
     const stream = await setupStream();
+    stream.getVideoTracks()[0].onended = function () {
+        console.log(123);
+        stopRecording();
+    };
     mediaRecorder = new MediaRecorder(stream);
 
     mediaRecorder.ondataavailable = function (e) {
-        // console.log(e);
         chunks.push(e.data);
     };
 
-    // mediaRecorder.onstop = handleStop;
+    mediaRecorder.onstop = handleStop;
 
     mediaRecorder.start(200);
     $(".download-video-btn").classList.add("disabled");
@@ -55,8 +59,7 @@ async function startRecording() {
     return mediaRecorder;
 }
 
-function stopRecording() {
-    mediaRecorder.stop();
+function handleStop() {
     const blob = new Blob(chunks, { type: "video/webm" });
 
     const videoDownload = $(".video-download");
@@ -71,6 +74,10 @@ function stopRecording() {
     $(".start-btn").disabled = false;
     $(".stop-btn").disabled = true;
     console.log("Recording stop .....");
+}
+
+function stopRecording() {
+    mediaRecorder.stop();
 }
 
 $(".start-btn").addEventListener("click", startRecording);
