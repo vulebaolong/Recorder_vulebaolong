@@ -1,0 +1,9 @@
+node_modules
+
+dist
+
+.parcel-cahe
+
+.DS_Store
+
+config.env
