@@ -1,3 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.btn {
+    @apply disabled:opacity-50 transition duration-300 px-4 py-2 font-semibold text-sm rounded-lg shadow-sm;
+}
+.btn-blue {
+    @apply bg-blue-700 enabled:hover:bg-blue-800 enabled:active:bg-blue-900 text-white;
+}

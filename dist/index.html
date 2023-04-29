@@ -61,10 +61,50 @@
             <section class="">
                 <div class="container mx-auto">
                     <div class="video-recorder">
-                        <h2>Video Recorder</h2>
+                        <!-- TITLE -->
+                        <h2 class="font-semibold">Video Recorder</h2>
+                        <!-- VIDEO FEEDBACK-->
+                        <!-- <div class="video-feedback"></div> -->
+                        <video
+                            class="video-feedback bg-black w-full h-auto"
+                            src=""
+                        ></video>
+                        <!-- BUTTON -->
+                        <div class="flex gap-4 justify-center items-center">
+                            <button class="start-btn btn btn-blue flex-1">
+                                Start Recording
+                            </button>
+                            <button class="stop-btn btn btn-blue flex-1" disabled>
+                                Stop Recording
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- DOWNLOAD VIDEO -->
+            <section class="download-video-section hidden">
+                <div class="container mx-auto">
+                    <div class="download-video">
+                        <!-- TITLE -->
+                        <h2 class="font-semibold">Download Video</h2>
+                        <!-- VIDEO DOWNLOAD-->
+                        <video
+                            class="video-download bg-black w-full h-auto"
+                            src=""
+                        ></video>
+                        <!-- BUTTON -->
+                        <div class="flex gap-4 justify-center items-center">
+                            <a class="download-video-btn btn btn-blue flex-1 text-center"
+                                >Download</a
+                            >
+                        </div>
                     </div>
                 </div>
             </section>
         </main>
+
+        <!-- JS -->
+        <script src="./js/main.js"></script>
     </body>
 </html>
