@@ -2367,6 +2367,7 @@ video {
 }
 
 .btn {
+  cursor: pointer;
   border-radius: 0.5rem;
   padding-left: 1rem;
   padding-right: 1rem;
@@ -2386,6 +2387,7 @@ video {
 }
 
 .btn:disabled {
+  cursor: default;
   opacity: 0.5;
 }
 
@@ -2404,6 +2406,11 @@ video {
 .btn-blue:active:enabled {
   --tw-bg-opacity: 1;
   background-color: rgb(30 58 138 / var(--tw-bg-opacity));
+}
+
+a.disabled {
+  cursor: default;
+  opacity: 0.5;
 }
 
 @media (min-width: 640px) {

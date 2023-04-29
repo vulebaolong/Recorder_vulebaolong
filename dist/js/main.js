@@ -1,5 +1,9 @@
 const $ = (selector) => document.querySelector(selector);
 const $$ = (selector) => document.querySelectorAll(selector);
+const downloadBtn = $(".download-video-btn");
+$(".download-video-btn").classList.add("disabled");
+
+$(".download-video-section").scrollIntoView({ behavior: "smooth", block: "start" });
 let chunks = [];
 let mediaRecorder;
 
@@ -10,8 +14,7 @@ async function setupStream() {
             audio: true,
         });
         setupVideoFeedback(stream);
-        // console.log({ stream, audio });
-        // return { stream, audio };
+
         return stream;
     } catch (error) {
         console.log(error);
@@ -35,44 +38,36 @@ function setupVideoFeedback(stream) {
 }
 
 async function startRecording() {
-    // const { stream, audio } = await setupStream();
     const stream = await setupStream();
-    // mixedStream = new MediaStream([...stream.getTracks(), ...audio.getTracks()]);
     mediaRecorder = new MediaRecorder(stream);
 
     mediaRecorder.ondataavailable = function (e) {
+        // console.log(e);
         chunks.push(e.data);
     };
 
-    mediaRecorder.onstop = handleStop();
+    // mediaRecorder.onstop = handleStop;
 
     mediaRecorder.start(200);
+    $(".download-video-btn").classList.add("disabled");
     $(".start-btn").disabled = true;
     $(".stop-btn").disabled = false;
     return mediaRecorder;
 }
 
-function handleStop() {
-    const blob = new Blob(chunks, { type: "video/mp4" });
-    chunks = [];
-
-    const downloadBtn = $(".download-video-btn");
-    downloadBtn.href = URL.createObjectURL(blob);
-    downloadBtn.download = "screen-recording.mp4";
-    downloadBtn.disabled = false;
+function stopRecording() {
+    mediaRecorder.stop();
+    const blob = new Blob(chunks, { type: "video/webm" });
 
     const videoDownload = $(".video-download");
     videoDownload.src = URL.createObjectURL(blob);
     videoDownload.load();
-    videoDownload.onloadedata = () => {
-        const sectionDownloadVideo = $(".download-video-section");
-        sectionDownloadVideo.classList.remove("hidden");
-        sectionDownloadVideo.scrollIntroView({ behavior: "smooth", block: "start" });
-    };
-}
+    downloadBtn.href = URL.createObjectURL(blob);
+    downloadBtn.download = `recorded-video.webm`;
 
-function stopRecording() {
-    mediaRecorder.stop();
+    chunks = [];
+
+    downloadBtn.classList.remove("disabled");
     $(".start-btn").disabled = false;
     $(".stop-btn").disabled = true;
     console.log("Recording stop .....");
@@ -80,3 +75,9 @@ function stopRecording() {
 
 $(".start-btn").addEventListener("click", startRecording);
 $(".stop-btn").addEventListener("click", stopRecording);
+downloadBtn.addEventListener("click", () => {
+    if (Array.from(downloadBtn.classList).includes("disabled")) return;
+    downloadBtn.classList.add("disabled");
+    $(".start-btn").disabled = false;
+    $(".stop-btn").disabled = true;
+});
