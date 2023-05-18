@@ -422,6 +422,12 @@ video {
   display: none;
 }
 
+input[type="number"]::-webkit-inner-spin-button,
+    input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
 *, ::before, ::after {
   --tw-border-spacing-x: 0;
   --tw-border-spacing-y: 0;
@@ -812,8 +818,16 @@ video {
   height: auto;
 }
 
+.w-8 {
+  width: 2rem;
+}
+
 .w-full {
   width: 100%;
+}
+
+.w-9 {
+  width: 2.25rem;
 }
 
 .max-w-none {
@@ -1340,6 +1354,10 @@ video {
   justify-items: stretch;
 }
 
+.gap-2 {
+  gap: 0.5rem;
+}
+
 .gap-4 {
   gap: 1rem;
 }
@@ -1644,6 +1662,10 @@ video {
   border-radius: 0.25rem;
 }
 
+.rounded-lg {
+  border-radius: 0.5rem;
+}
+
 .rounded-b {
   border-bottom-right-radius: 0.25rem;
   border-bottom-left-radius: 0.25rem;
@@ -1891,6 +1913,16 @@ video {
 .object-scale-down {
   -o-object-fit: scale-down;
      object-fit: scale-down;
+}
+
+.px-2 {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+.px-1 {
+  padding-left: 0.25rem;
+  padding-right: 0.25rem;
 }
 
 .text-left {
@@ -2411,6 +2443,105 @@ video {
 a.disabled {
   cursor: default;
   opacity: 0.5;
+}
+
+/* SWITCH */
+
+.switch_button {
+  position: relative;
+  display: inline-flex;
+  height: 1.5rem;
+  width: 2.75rem;
+  flex-shrink: 0;
+  cursor: pointer;
+  border-radius: 9999px;
+  border-width: 2px;
+  border-color: transparent;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 200ms;
+  background-color: rgb(229 231 235);
+}
+
+.switch_t {
+  position: absolute;
+  margin: -1px;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  white-space: nowrap;
+  border-width: 0px;
+  padding: 0px;
+  clip: rect(0, 0, 0, 0);
+}
+
+.switch_icons {
+  position: relative;
+  display: inline-block;
+  height: 1.25rem;
+  width: 1.25rem;
+  --tw-translate-x: 0px;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+  border-radius: 9999px;
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+  --tw-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --tw-shadow-colored: 0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+  transition-duration: 200ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.switch_icon {
+  position: absolute;
+  display: flex;
+  height: 100%;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  transition-property: opacity;
+}
+
+.switch_icon-1 {
+  transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  transition-duration: 100ms;
+  opacity: 1;
+}
+
+.switch_icon-2 {
+  transition-timing-function: cubic-bezier(0.4, 0, 1, 1);
+  transition-duration: 200ms;
+  opacity: 0;
+  inset: 0px;
+}
+
+.switch_icon_x {
+  color: rgb(156 163 175);
+  width: 0.75rem;
+  height: 0.75rem;
+}
+
+.switch_icon_v {
+  color: rgb(79 70 229);
+  width: 0.75rem;
+  height: 0.75rem;
+}
+
+.switch-check {
+  background-color: rgb(79 70 229);
+}
+
+.switch-check .switch_icon-1 {
+  opacity: 0;
+}
+
+.switch-check .switch_icon-2 {
+  opacity: 1;
+}
+
+.switch-check .switch_icons {
+  --tw-translate-x: 1.25rem;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
 @media (min-width: 640px) {
