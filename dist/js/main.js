@@ -46,6 +46,16 @@ async function startRecording() {
     // startRecording
     mediaRecorder.start(200);
 
+    const isCheck = Array.from($(".switch_button").classList).includes("switch-check");
+    if (isCheck) {
+        clock.timeOut = {
+            h: +$(".clockH").value,
+            m: +$(".clockM").value,
+            s: +$(".clockS").value,
+        };
+        clock.start($(".h"), $(".m"), $(".s"));
+    }
+
     $(".download-video-btn").classList.add("disabled");
     $(".start-btn").disabled = true;
     $(".stop-btn").disabled = false;
@@ -79,15 +89,6 @@ function stopRecording() {
 
 $(".start-btn").addEventListener("click", function () {
     startRecording();
-    const isCheck = Array.from($(".switch_button").classList).includes("switch-check");
-    if (isCheck) {
-        clock.timeOut = {
-            h: +$(".clockH").value,
-            m: +$(".clockM").value,
-            s: +$(".clockS").value,
-        };
-        clock.start($(".h"), $(".m"), $(".s"));
-    }
 });
 $(".stop-btn").addEventListener("click", function () {
     stopRecording();
