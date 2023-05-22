@@ -56,14 +56,43 @@
         </header>
 
         <!-- MAIN -->
-        <main class="overflow-hidden">
+        <main class="overflow-hidden my-24 space-y-20">
             <!-- VIDEO RECORDER -->
             <section class="">
                 <div class="container mx-auto">
                     <div class="video-recorder">
                         <!-- TITLE -->
-                        <div class="flex justify-between items-center">
+                        <div class="">
                             <h2 class="font-semibold">Video Recorder</h2>
+                        </div>
+                        <!-- VIDEO FEEDBACK-->
+                        <video
+                            class="video-feedback bg-black mx-auto w-full h-auto mt-5 mb-3"
+                            src=""
+                            muted
+                            controls
+                        ></video>
+                        <!-- CONTROLL -->
+                        <div class="flex justify-between items-center">
+                            <!-- BUTTON -->
+                            <div class="flex gap-4 justify-center items-center">
+                                <button class="start-btn btn btn-blue flex-1">
+                                    Start
+                                </button>
+                                <button class="stop-btn btn btn-blue flex-1" disabled>
+                                    Stop
+                                </button>
+                            </div>
+                            <!-- NAME -->
+                            <div class="">
+                                <label for="namevideo">Name: </label>
+                                <input
+                                    id="namevideo"
+                                    class="rounded-lg px-2"
+                                    type="text"
+                                />
+                            </div>
+                            <!-- CLOCK -->
                             <div class="time_out flex gap-4 items-center justify-center">
                                 <div class="flex gap-2 items-center justify-center">
                                     <input
@@ -112,22 +141,6 @@
                                     <span class="s">00</span>
                                 </div>
                             </div>
-                        </div>
-                        <!-- VIDEO FEEDBACK-->
-                        <video
-                            class="video-feedback bg-black mx-auto w-full h-auto"
-                            src=""
-                            muted
-                            controls
-                        ></video>
-                        <!-- BUTTON -->
-                        <div class="flex gap-4 justify-center items-center">
-                            <button class="start-btn btn btn-blue flex-1">
-                                Start Recording
-                            </button>
-                            <button class="stop-btn btn btn-blue flex-1" disabled>
-                                Stop Recording
-                            </button>
                         </div>
                     </div>
                 </div>

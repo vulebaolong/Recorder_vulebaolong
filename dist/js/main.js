@@ -65,7 +65,8 @@ async function startRecording() {
 function handleStop() {
     const blob = new Blob(chunks, { type: "video/webm" });
     const url = URL.createObjectURL(blob);
-    const fileName = `recorded-video.webm`;
+    const inputNameEl = $("#namevideo").value.trim();
+    const fileName = inputNameEl === "" ? `recorded-video.webm` : `${inputNameEl}`;
 
     const videoDownload = $(".video-download");
     videoDownload.src = url;
